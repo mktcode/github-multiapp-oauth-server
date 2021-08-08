@@ -3,10 +3,22 @@ require('dotenv').config()
 const axios = require('axios')
 const express = require('express')
 const server = express()
+const cors = require('cors')
 const port = process.env.PORT || 3000
 const pathPrefix = process.env.PATH_PREFIX || ''
 
-server.get(pathPrefix + '/', async (req, res) => {
+const checkOrigin = (req, callback) => {
+  const app = req.query.app
+  const allowedOrigins = process.env[app.toUpperCase() + '_ORIGIN']
+  if (allowedOrigins) {
+    callback(null, { origin: allowedOrigins.split(',').includes(req.header('Origin')) })
+  } else {
+    // if no allowed origins are configured for an app, allow all
+    callback(null, { origin: true })
+  }
+}
+
+server.get(pathPrefix + '/', cors(checkOrigin), async (req, res) => {
   const app = req.query.app
   const code = req.query.code
   if (app && code) {

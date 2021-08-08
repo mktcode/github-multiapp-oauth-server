@@ -39,3 +39,11 @@ You can also set the port and a path prexis in `.env`:
 PORT=3001
 PATH_PREFIX=/github-oauth
 ```
+
+# CORS
+
+By default all origins are allowed but you can restrict it per app.
+
+```
+OTHERAPP_ORIGIN=https://yourdomain.com,https://dev.yourdomain.com
+```
