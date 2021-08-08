@@ -26,12 +26,14 @@ OTHERAPP_SECRET=...
 Now you can start the server and make requests like this:
 
 ```
-node server
+npm start
+```
 
+```
 GET http://localhost:3000/?app=otherapp&code=...
 ```
 
-You can change the port the server listens to:
+You can set the port the server listens to in `.env`:
 
 ```
 PORT=3001
