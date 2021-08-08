@@ -33,8 +33,9 @@ npm start
 GET http://localhost:3000/?app=otherapp&code=...
 ```
 
-You can set the port the server listens to in `.env`:
+You can also set the port and a path prexis in `.env`:
 
 ```
 PORT=3001
+PATH_PREFIX=/github-oauth
 ```
