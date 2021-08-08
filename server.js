@@ -4,8 +4,9 @@ const axios = require('axios')
 const express = require('express')
 const server = express()
 const port = process.env.PORT || 3000
+const pathPrefix = process.env.PATH_PREFIX || ''
 
-server.get('/', async (req, res) => {
+server.get(pathPrefix + '/', async (req, res) => {
   const app = req.query.app
   const code = req.query.code
   if (app && code) {
