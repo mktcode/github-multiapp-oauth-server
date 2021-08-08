@@ -3,7 +3,7 @@ require('dotenv').config()
 const axios = require('axios')
 const express = require('express')
 const server = express()
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 server.get('/', async (req, res) => {
   const app = req.query.app
