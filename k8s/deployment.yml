@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-oauth-server
+  labels:
+    app: github-oauth-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-oauth-server
+  template:
+    metadata:
+      labels:
+        app: github-oauth-server
+    spec:
+      containers:
+        - name: github-oauth-server
+          image: alo42/github-oauth-server:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: OPENQ_ID
+              value: 5fbd39c6916b7efb63cc
+            - name: OPENQ_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: openq-client-secret
+                  key: openq-client-secret
+          resources: {}
