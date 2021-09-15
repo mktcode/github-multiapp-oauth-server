@@ -21,11 +21,11 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: MYAPP_ID
-              value: <DATA-OMMITED>
-            - name: MYAPP_SECRET
+            - name: OPENQ_ID
+              value: 5fbd39c6916b7efb63cc
+            - name: OPENQ_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: app-secret
-                  key: app-secret
+                  name: openq-client-secret
+                  key: openq-client-secret
           resources: {}

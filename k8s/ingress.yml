@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: example.com
+    - host: development.openq.dev
       http:
         paths:
           - path: /auth
@@ -19,5 +19,5 @@ spec:
                   number: 3000
   tls:
     - hosts:
-        - "*.example.com"
+        - "*.openq.dev"
       secretName: ssl-cert
