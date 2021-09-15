@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-oauth-server
+  labels:
+    app: github-oauth-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-oauth-server
+  template:
+    metadata:
+      labels:
+        app: github-oauth-server
+    spec:
+      containers:
+        - name: github-oauth-server
+          image: alo42/github-oauth-server:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MYAPP_ID
+              value: <DATA-OMMITED>
+            - name: MYAPP_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: app-secret
+          resources: {}
